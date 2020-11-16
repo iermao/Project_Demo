@@ -9,19 +9,14 @@
                     </el-input>
                 </el-form-item>
                 <el-form-item prop="password">
-                    <el-input
-                        type="password"
-                        placeholder="password"
-                        v-model="param.password"
-                        @keyup.enter.native="submitForm()"
-                    >
+                    <el-input type="password" placeholder="password" v-model="param.password" @keyup.enter.native="submitForm()">
                         <el-button slot="prepend" icon="el-icon-lx-lock"></el-button>
                     </el-input>
                 </el-form-item>
                 <div class="login-btn">
                     <el-button type="primary" @click="submitForm()">登录</el-button>
                 </div>
-                <p class="login-tips">Tips : 用户名和密码随便填。</p>
+                <p class="login-tips">Tips : 请输入用户名</p>
             </el-form>
         </div>
     </div>
@@ -29,21 +24,22 @@
 
 <script>
 export default {
-    data: function() {
+    data: function () {
         return {
             param: {
                 username: 'admin',
-                password: '123123',
+                password: '123123'
             },
             rules: {
                 username: [{ required: true, message: '请输入用户名', trigger: 'blur' }],
-                password: [{ required: true, message: '请输入密码', trigger: 'blur' }],
-            },
+                password: [{ required: true, message: '请输入密码', trigger: 'blur' }]
+            }
         };
     },
     methods: {
         submitForm() {
-            this.$refs.login.validate(valid => {
+            this.$refs.login.validate((valid) => {
+                console.log(valid);
                 if (valid) {
                     this.$message.success('登录成功');
                     localStorage.setItem('ms_username', this.param.username);
@@ -54,8 +50,8 @@ export default {
                     return false;
                 }
             });
-        },
-    },
+        }
+    }
 };
 </script>
 
@@ -64,7 +60,7 @@ export default {
     position: relative;
     width: 100%;
     height: 100%;
-    background-image: url(../../assets/img/login-bg.jpg);
+    /* background-image: url(../../assets/img/login-bg.jpg); */
     background-size: 100%;
 }
 .ms-title {
