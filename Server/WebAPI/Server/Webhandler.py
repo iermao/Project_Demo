@@ -38,9 +38,11 @@ class IndexHandler(BaseHandler):
 
     # 确认请求合法 依赖于get_current_user(self):函数的返回值作为判断请求是否合法
     async def get(self):
+        print("IndexHandler  get")
         self.write("get")
 
     async def post(self, *args, **kwargs):
+        print("IndexHandler  post")
         self.write("post")
 
 

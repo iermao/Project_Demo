@@ -10,7 +10,7 @@ from tornado.options import define, options
 
 from Server import config
 
-define("port", type=int, default=config.ws_point, help="run on the given port")
+define("port", type=int, default=config.web_point, help="run on the given port")
 
 # from .Webhandler import IndexHandler
 # from .Webhandler import LoginHandler

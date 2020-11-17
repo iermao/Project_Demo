@@ -10,8 +10,9 @@ logger.setLevel(logging.INFO)  # Log等级总开关
 # 第二步，创建一个handler，用于写入日志文件
 rq = time.strftime('%Y%m%d', time.localtime(time.time()))
 
-_path = os.path.abspath('.')
-log_path = os.path.dirname(_path) + '/mywebsocket/Logs/'
+_path = os.getcwd()
+print("------------------" + _path)
+log_path = _path + "/Logs/"
 print(log_path)
 # print(os.path.abspath(os.curdir))
 log_name = log_path + rq + '.log'

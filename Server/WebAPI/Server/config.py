@@ -15,7 +15,7 @@ ws_mysql_db = "gardendressup"
 ws_mysql_charset = "utf8"
 
 # 网站端口
-web_point = 8000
+web_point = 8910
 
 # 服务端口
 ws_point = 8000
