@@ -4,20 +4,13 @@
 
 import os
 import tornado
-# import tornado.ioloop
-# import tornado.httpserver
+import Server.Web
 from tornado.options import define, options
 
 from Server import config
+from Server import urls
 
 define("port", type=int, default=config.web_point, help="run on the given port")
-
-# from .Webhandler import IndexHandler
-# from .Webhandler import LoginHandler
-
-# from .Sockethandler import GameHandler
-
-from . import urls
 
 
 class app():
@@ -26,17 +19,17 @@ class app():
         self.AppStart()
 
     def AppStart(self):
-
+        # print(urls)
         options.parse_command_line()  # 允许命令行启动程序
         app = tornado.web.Application(
-            urls,
+            urls.urls,
             websocket_ping_interval=5,
             static_path=os.path.join(os.path.dirname(__file__), "statics"),
             template_path=os.path.join(os.path.dirname(__file__), "templates"),
             login_url='/login',
             # xsrf_cookies=False,
             # cookie_secret="2hcicVu+TqShDpfsjMWQLZ0Mkq5NPEWSk9fi0zsSt3A=",
-            debug=False,
+            debug=True,
         )
         http_server = tornado.httpserver.HTTPServer(app)  # 将应用处理逻辑 传递给HTTPServer 服务
         http_server.listen(options.port)  # 配置监听地址到 HTTPServe

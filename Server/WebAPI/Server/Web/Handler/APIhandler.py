@@ -8,9 +8,6 @@ import tornado.ioloop
 import tornado.httpserver
 
 from tornado.web import RequestHandler
-from Server.Web.Accountmanage import Account
-from Server.Web.bytedanceHandler import bytedanceHandler
-
 from tornado import httpclient
 
 import json
@@ -46,9 +43,7 @@ class IndexHandler(BaseHandler):
         self.write("post")
 
 
-class LoginHandler(BaseHandler):
-    acc = Account()
-
+class apihandler(BaseHandler):
     def set_default_headers(self):
         self.allowMyOrigin()
 
@@ -58,9 +53,9 @@ class LoginHandler(BaseHandler):
 
     async def post(self, *args, **kwargs):
         _data = self.request.body
-        msg = await self.acc.Reg(_data, self)
+        # msg = await self.acc.Reg(_data, self)
 
-        msgjson = json.loads(msg)
+        # msgjson = json.loads(msg)
         # print(self.request.method)
         # print(self.request.uri)
         # print(self.request.path)
@@ -80,28 +75,8 @@ class LoginHandler(BaseHandler):
         # print(self.request.full_url())
         # print(self.request.request_time())
 
-        self.write(msgjson)
+        # self.write(msgjson)
 
-        self.finish()
-
-    def check_origin(self, origin):
-        return True  # 允许WebSocket的跨域请求
-
-
-# 平台登录等
-class ptHandler(BaseHandler):
-    bytedance = bytedanceHandler()
-
-    def set_default_headers(self):
-        self.allowMyOrigin()
-
-    async def get(self, *args, **kwargs):
-        await self.bytedance.GET(self)
-        self.finish()
-
-    async def post(self, *args, **kwargs):
-        await self.bytedance.POST(self)
-        # await self.write("post")
         self.finish()
 
     def check_origin(self, origin):
