@@ -27,18 +27,23 @@ class BaseHandler(RequestHandler):
 
 class apihandler(BaseHandler):
     def set_default_headers(self):
-        self.allowMyOrigin()
+        pass
+        # self.allowMyOrigin()
 
     async def get(self, *args, **kwargs):
         print("get")
 
         _id = dbhelper.Seluid('13')
-        self.write(self.request.uri + "get  " + str(_id))
+        # self.write(self.request.uri + "get  " + str(_id))
+
+        self.write('{"code":20000,"data":{"roles":["admin"],"introduction":"I am a super administrator","avatar":"https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif","name":"Super Admin"}}')
 
     async def post(self, *args, **kwargs):
         _data = self.request.body
         _id = await dbhelper.Seluid('13')
-        self.write(self.request.uri + "post  " + str(_id))
+        # self.write(self.request.uri + "post  " + str(_id))
+
+        self.write('{"code":20000,"data":{"roles":["admin"],"introduction":"I am a super administrator","avatar":"https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif","name":"Super Admin"}}')
         # msg = await self.acc.Reg(_data, self)
 
         # msgjson = json.loads(msg)
@@ -65,5 +70,5 @@ class apihandler(BaseHandler):
 
         self.finish()
 
-    def check_origin(self, origin):
-        return True  # 允许WebSocket的跨域请求
+    # def check_origin(self, origin):
+    #     return True  # 允许WebSocket的跨域请求
