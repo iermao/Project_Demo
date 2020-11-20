@@ -23,7 +23,7 @@ class BaseHandler(RequestHandler):
         self.set_header('Access-Control-Allow-Headers', 'x-requested-with')
         self.set_header("Access-Control-Allow-Methods", "POST, GET, PUT, DELETE, OPTIONS")
         # self.set_header('Access-Control-Allow-Methods', 'POST, GET, PUT, DELETE')
-        # 
+        #
 
 
 class apihandler(BaseHandler):
