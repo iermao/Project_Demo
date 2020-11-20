@@ -1,11 +1,15 @@
 import request from '@/utils/request'
 
 export function login(data) {
-  return request({
+  console.log("``````````````````````````````````````````````````````````````");
+  console.log(data);
+  var _data = request({
     url: '/vue-element-admin/user/login',
     method: 'post',
     data
   })
+  console.log(_data);
+  return _data;
 }
 
 export function getInfo(token) {
