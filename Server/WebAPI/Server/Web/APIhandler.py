@@ -38,7 +38,7 @@ class apihandler(BaseHandler):
     async def post(self, *args, **kwargs):
         _data = self.request.body
         _id = await dbhelper.Seluid('13')
-        self.write(self.request.uri + "post  " + _id)
+        self.write(self.request.uri + "post  " + str(_id))
         # msg = await self.acc.Reg(_data, self)
 
         # msgjson = json.loads(msg)
